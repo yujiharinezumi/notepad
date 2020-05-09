@@ -1,10 +1,29 @@
 <template>
   <div class="home">
     <ul v-for="memo in newest" :key="memo.id">
-      <li>{{ memo.body }}</li>
+      <li><router-link :to="{name: 'Edit', params: {id: memo.id}}">
+      {{ memo.body }}
+      </router-link>
+      </li>
     </ul>
   </div>
 </template>
+
+<style>
+  textarea {
+    width: 100%;
+    height: 10rem;
+  }
+
+  button {
+    border: 1px solid #333;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+  }
+</style>
+
 
 <script>
 export default {
