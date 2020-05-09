@@ -25,14 +25,20 @@
 <script>
   export  default {
     name: "new",
-    data: function (){
+    data: function () {
       return {
          memoBody:  ""
       }
     },
-    methods: function(){
-        alert("メモが保存されました");
+
+    methods: {
+        save: function(){
+        this.$store.commit("save",{
+          body: this.memoBody
+        });
         this.$router.push("/");
+        }
+       
     }
   }
 </script>
