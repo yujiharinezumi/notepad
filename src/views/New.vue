@@ -1,8 +1,8 @@
 <template>
     <div class="editor">
     <h1>New Memo</h1>
-        <textarea name="memo"></textarea>
-        <button>保存</button>
+        <textarea name="memo" v-model="memoBody"></textarea>
+        <button @click="save">保存</button>
     </div>
 </template>
 
@@ -22,3 +22,17 @@
   }
 </style>
 
+<script>
+  export  default {
+    name: "new",
+    data: function (){
+      return {
+         memoBody:  ""
+      }
+    },
+    methods: function(){
+        alert("メモが保存されました");
+        this.$router.push("/");
+    }
+  }
+</script>
