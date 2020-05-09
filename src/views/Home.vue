@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Header>My Memos</Header>
     <ul v-for="memo in newest" :key="memo.id">
       <li><router-link :to="{name: 'Edit', params: {id: memo.id}}">
       {{ memo.body }}
@@ -26,8 +27,14 @@
 
 
 <script>
+import Header from "@/components/Header.vue"
+
+
 export default {
   name: "home",
+  components: {
+    Header
+  },
   computed: {
     newest: function() {
       return this.$store.state.memos.slice().reverse();

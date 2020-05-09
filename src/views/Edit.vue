@@ -1,29 +1,38 @@
 <template>
   <div class="editor">
-    <h1>Edit Memo</h1>
-    <textarea name="memo" v-model="memo.body"></textarea>
-    <button @click="save">保存</button>
+    <Header>Edit Memo</Header>
+    <textarea name="memo" v-model="memoBody"></textarea>
+    <button>保存</button>
   </div>
 </template>
 
 
 <script>
+import Header from "@/components/Header.vue"
+
   export default {
     name: 'edit',
-    computed: {
-      memo: function(){
-        let id = this.$route.params["id"];
-        return this.$store.state.memos.find(memo => memo.id == id );
+    components: {
+      Header
+    },
+    data: function() {
+      return{
+        memoBody: '' 
       }
+    },
+    mounted: function() {
+      let id = this.$route.params["id"];
+      var memo =  this.$store.state.memos.find(memo => memo.id == id );
+      this.memoBody = memo.body;
     },
     methods: {
       save: function(){
         this.$store.commit("update", {
-          id: this.memo.id,
-          body: this.memo.body
+          id: this.$route.params["id"],
+          body: this.memoBody
         });
         this.$router.push('/'); 
-      }
+     }
     }
 
   }
