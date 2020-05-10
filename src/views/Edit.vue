@@ -2,7 +2,7 @@
   <div class="editor">
     <Header>Edit Memo</Header>
     <textarea name="memo" v-model="memoBody"></textarea>
-    <button>保存</button>
+    <button @click="save">保存</button>
   </div>
 </template>
 
